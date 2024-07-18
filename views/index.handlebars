@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Lista de Productos con Paginación</h1>
+    <ul>
+        {{#each products}}
+        <li>
+            <a href="/products/{{this._id}}">{{this.title}}</a> - {{this.price}}
+            <button onclick="addToCart('{{this._id}}')">Agregar al carrito</button>
+        </li>
+        {{/each}}
+    </ul>
+    <div>
+        {{#if hasPrevPage}}
+        <a href="?page={{prevPage}}">Página Anterior</a>
+        {{/if}}
+        <span>Página {{page}} de {{totalPages}}</span>
+        {{#if hasNextPage}}
+        <a href="?page={{nextPage}}">Página Siguiente</a>
+        {{/if}}
+    </div>
+    <script src="/js/main.js"></script>
+</body>
+</html>
